@@ -1,6 +1,7 @@
 import './styles/App.css';
 import React, { useState, useEffect } from 'react';
 import Board from './components/Board';
+import Score from './components/Score';
 
 let clickedCards = [];
 let onFirstLoad = true;
@@ -20,28 +21,46 @@ function shuffleArray(array, shuffledArray = []) {
   return shuffledArray;
 }
 
-function checkIfUserWon() {
-  if (clickedCards.length === 12) {
-    console.log('You Won !');
-    clickedCards = [];
-    return true;
-  }
-  return false;
-}
-
-function checkIfUserLoose(cardid) {
-  if (clickedCards.includes(cardid)) {
-    console.log('You Loose !');
-    clickedCards = [];
-    return true;
-  }
-  return false;
-}
-
 function App() {
   const [cardArray, setCardArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  const increaseScore = () => {
+    setScore(score + 1);
+  };
+
+  const resetScore = () => {
+    setScore(0);
+  };
+
+  const updateHighScore = () => {
+    // Check if high score need to be updated
+    if (highScore < score) {
+      setHighScore(score);
+    }
+  };
+
+  const checkIfUserWon = () => {
+    if (clickedCards.length === 12) {
+      clickedCards = [];
+      setHighScore(12);
+      resetScore();
+    }
+  };
+
+  const checkIfUserLoose = (cardid) => {
+    if (clickedCards.includes(cardid)) {
+      clickedCards = [];
+      updateHighScore();
+      resetScore();
+      return true;
+    }
+    return false;
+  };
 
   useEffect(() => {
+    // Shuffle cards on the first page loading
     if (onFirstLoad) {
       onFirstLoad = false;
 
@@ -52,14 +71,11 @@ function App() {
   });
 
   useEffect(() => {
-    // Shuffles the cards...
-
     const onCardClick = (e) => {
       // Each time user click on a card...
 
       // Get the card ID...
       const clickedCardId = e.target.parentElement.getAttribute('cardid');
-      console.log(clickedCardId);
 
       // Check if user loose (he clicked on a card more than once)
       const isGameOver = checkIfUserLoose(clickedCardId);
@@ -69,6 +85,9 @@ function App() {
         // Add the card to the clickedCard array
         clickedCards.push(clickedCardId);
 
+        // Increase Score
+        increaseScore();
+
         // Check if user won (he clicked on all the 12 cards,
         //    without clicking on a single card more than once)
         checkIfUserWon();
@@ -77,12 +96,9 @@ function App() {
       // Shuffles the cards...
       const shuffledArray = shuffleArray(cardArray);
       setCardArray(shuffledArray);
-
-      console.log(clickedCards);
     };
 
     const cards = document.querySelectorAll('.card');
-
     cards.forEach((card) => card.addEventListener('click', onCardClick));
 
     return () => {
@@ -92,9 +108,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1>ToDo Header</h1>
-      <h2>ToDo Score</h2>
+
+      <div className="header">
+        <h1>Memory Card</h1>
+        <h3>Get points by clicking on an image but don't click on any more than once!</h3>
+      </div>
+
+      <Score score={score} highscore={highScore} />
+
       <Board cardArray={cardArray} />
+
     </div>
   );
 }

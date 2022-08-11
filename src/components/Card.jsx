@@ -29,8 +29,6 @@ function Card(props) {
   return (
     <div className="card" cardid={props.cardId}>
       <img src={imgArray[props.cardId - 1]} alt={altArray[props.cardId - 1]} />
-      TEST Card id:
-      {props.cardId}
     </div>
   );
 }
