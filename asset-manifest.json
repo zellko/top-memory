@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/top-memory/static/css/main.328cfbd7.css",
+    "main.js": "/top-memory/static/js/main.df87fc14.js",
+    "static/media/4.svg": "/top-memory/static/media/4.8870339a8ad77bc474a9ccf4990315e9.svg",
+    "static/media/1.svg": "/top-memory/static/media/1.b17ad3f2cafddda6d682fd5cb5861941.svg",
+    "static/media/2.svg": "/top-memory/static/media/2.2658d9d0cd8ba070deb7bf2a8e29a859.svg",
+    "static/media/12.svg": "/top-memory/static/media/12.b73371e1bcb635e52f16d9ba8ec653e0.svg",
+    "static/media/6.svg": "/top-memory/static/media/6.01fbea4bb2475f10eb9fd3285e6ed947.svg",
+    "static/media/10.svg": "/top-memory/static/media/10.9e85a01fbd085ceeb0052eebcd14beca.svg",
+    "static/media/9.svg": "/top-memory/static/media/9.db494cb4afefb9e7cd80c06780b8da8f.svg",
+    "static/media/3.svg": "/top-memory/static/media/3.3091d63f24f8e4d87cabd9bd4dc76a90.svg",
+    "static/media/7.svg": "/top-memory/static/media/7.92b72a822c0344848f75556673f34c7e.svg",
+    "static/media/11.svg": "/top-memory/static/media/11.75a695704a16d842ff54831f1a1bf6ef.svg",
+    "static/media/5.svg": "/top-memory/static/media/5.32c01ea4ba865b75ddb785386c674b63.svg",
+    "static/media/8.svg": "/top-memory/static/media/8.960fe42bc1c18e0f9c2761d998dc9c1a.svg",
+    "index.html": "/top-memory/index.html",
+    "main.328cfbd7.css.map": "/top-memory/static/css/main.328cfbd7.css.map",
+    "main.df87fc14.js.map": "/top-memory/static/js/main.df87fc14.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.328cfbd7.css",
+    "static/js/main.df87fc14.js"
+  ]
+}
